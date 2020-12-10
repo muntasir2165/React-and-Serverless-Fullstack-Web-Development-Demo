@@ -22,7 +22,7 @@ export default function Game({ history }) {
     const currentTime = new Date();
     const interval = setInterval(() => updateTime(currentTime), 1);
     return () => clearInterval(interval);
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line
   }, []);
 
   const updateTime = (startTime) => {
@@ -67,6 +67,7 @@ export default function Game({ history }) {
       }
       setRandomCharacter();
     },
+    // eslint-disable-next-line
     [currentCharacter]
   );
 
