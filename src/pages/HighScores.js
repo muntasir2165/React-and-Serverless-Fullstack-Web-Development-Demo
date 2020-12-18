@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ScoresList, ScoreLI } from '../styled/HighScores';
+import { StyledTitle } from '../styled/Random';
 
 export default function HighScores() {
   // display those scores
@@ -11,7 +12,7 @@ export default function HighScores() {
       try {
         const res = await fetch('/.netlify/functions/getHighScores');
         const scores = await res.json();
-        setHighScores(scores.formattedRecords);
+        setHighScores(scores.records);
       } catch (err) {
         console.error(err);
       }
@@ -21,11 +22,11 @@ export default function HighScores() {
 
   return (
     <div>
-      <h1>HighScores</h1>
+      <StyledTitle>HighScores</StyledTitle>
       <ScoresList>
-        {highScores.map((score) => (
+        {highScores.map((score, index) => (
           <ScoreLI key={score.id}>
-            {score.fields.name} - {score.fields.score}
+            {index + 1}. {score.fields.name} - {score.fields.score}
           </ScoreLI>
         ))}
       </ScoresList>
